@@ -1,0 +1,26 @@
+.guide-card {
+	width: 300px;
+	overflow: hidden;
+	height: 270px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.image {
+	width: 100%;
+	height: 180px;
+	overflow: hidden;
+	object-fit: contain;
+	border-bottom: 1px solid #eaeaea;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.image img {
+	width: 180px;
+}
+
+.guide-card .link:hover {
+	text-decoration: underline;
+}
