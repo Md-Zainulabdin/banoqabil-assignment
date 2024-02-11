@@ -149,14 +149,14 @@ const AgentsList = () => {
 			<Row>
 				<Col>
 					<Card>
-						<Card.Header className="text-end">
+						{/* <Card.Header className="text-end">
 							<div
 								className="p-2"
 								style={{ cursor: 'pointer' }}
 								onClick={() => setShowGrid(true)}>
 								<i className="ri-layout-masonry-fill fs-22 text-primary"></i>
 							</div>
-						</Card.Header>
+						</Card.Header> */}
 						<Card.Body>
 							<Table<CategoryData>
 								columns={columns}
