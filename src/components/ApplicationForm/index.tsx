@@ -55,7 +55,7 @@ const ApplicationForm = () => {
 		<div>
 			<Card>
 				<Row className="px-3 py-2">
-					<Col xl={8}>
+					<Col xl={12}>
 						<Card>
 							<Card.Header>
 								<h4 className="header-title">Application Form</h4>
@@ -65,19 +65,6 @@ const ApplicationForm = () => {
 								<FormExample />
 							</Card.Body>
 						</Card>
-					</Col>
-					<Col xl={4} className="pt-2">
-						<div
-							className="p-2 border rounded"
-							style={{ backgroundColor: '#fff2b3' }}>
-							<ul>
-								{instructions.map((instruction) => (
-									<li className="fs-16 mt-1" key={instruction.id}>
-										{instruction.label}
-									</li>
-								))}
-							</ul>
-						</div>
 					</Col>
 				</Row>
 			</Card>

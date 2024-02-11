@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect } from 'react'
 
 //images
-import authImg from '@/assets/images/auth-img.jpg'
 import { Card, Col, Container, Image, Row } from 'react-bootstrap'
 
 interface AccountLayoutProps {

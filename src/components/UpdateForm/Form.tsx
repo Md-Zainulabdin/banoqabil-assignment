@@ -16,7 +16,6 @@ function UpdateForm() {
 		userId: id,
 		token: user.token,
 	})
-
 	const [selectedCountry, setSelectedCountry] = useState('')
 	const [selectedEducationCountry, setSelectedEducationCountry] = useState('')
 	const [selectedProvince, setSelectedProvince] = useState('')
@@ -98,7 +97,7 @@ function UpdateForm() {
 				address: !isLoading ? data.studentId.address : '',
 				postalCode: !isLoading ? data.postalCode : '',
 				country: !isLoading ? data.studentId.countryLivingIn : '',
-				province: !isLoading ? data.studentId?.province : '',
+				province: !isLoading ? data?.province : '',
 				city: !isLoading ? data.city : '',
 				region: !isLoading ? data.region : '',
 				nic: !isLoading ? data.studentId.nic : '-',

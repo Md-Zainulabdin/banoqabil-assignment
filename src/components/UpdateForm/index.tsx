@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Card, Col, Row } from 'react-bootstrap'
+import { Card, Col, Nav, Row, Tab } from 'react-bootstrap'
 
 import FormExample from './Form'
 
@@ -15,24 +15,37 @@ import { fetchLastInstitution } from '@/redux/features/lastInstitutionSlice'
 import { fetchEnglishTest } from '@/redux/features/englishTestSlice'
 import { fetchUniversity } from '@/redux/features/universtieSlice'
 import { fetchProgramTypes } from '@/redux/features/programType'
+import Documents from './Documents'
+import Logs from './Logs'
+import Desks from './Desks'
 
-const instructions = [
+interface TabContentItem {
+	id: string
+	// icon: string;
+	title: string
+	body: React.ReactNode
+}
+
+const tabContents: TabContentItem[] = [
 	{
-		id: 1,
-		label: "As a counselor you can fill out applicant's base detail",
+		id: '01',
+		title: 'Update Form',
+		body: <FormExample />,
 	},
 	{
-		id: 2,
-		label:
-			'Allocate the application to your desk in case you wish to work further on this application.',
+		id: '02',
+		title: 'Documents',
+		body: <Documents />,
 	},
 	{
-		id: 3,
-		label: 'Shift desk once you wish to move application.',
+		id: '03',
+		title: 'Logs',
+		body: <Logs />,
 	},
 	{
-		id: 4,
-		label: 'Upload documents or skip the step.',
+		id: '04',
+		title: 'Desks',
+		body: <Desks />,
 	},
 ]
 
@@ -54,32 +67,33 @@ const UpdateApplicationForm = () => {
 	return (
 		<div>
 			<Card>
-				<Row className="px-3 py-2">
-					<Col xl={12}>
-						<Card>
-							<Card.Header>
-								<h4 className="header-title">Update Form</h4>
-								<p className="text-muted mb-0">Fill your information here</p>
-							</Card.Header>
-							<Card.Body>
-								<FormExample />
-							</Card.Body>
-						</Card>
-					</Col>
-					{/* <Col xl={4} className="pt-2">
-						<div
-							className="p-2 border rounded"
-							style={{ backgroundColor: '#fff2b3' }}>
-							<ul>
-								{instructions.map((instruction) => (
-									<li className="fs-16 mt-1" key={instruction.id}>
-										{instruction.label}
-									</li>
-								))}
-							</ul>
-						</div>
-					</Col> */}
-				</Row>
+				<Card.Body>
+					<Tab.Container defaultActiveKey="Update Form">
+						<Nav variant="tabs" justify className="nav-bordered" as="ul">
+							{(tabContents || []).map((tab, idx) => {
+								return (
+									<Nav.Item key={idx} as="li">
+										<Nav.Link eventKey={tab.title}>
+											<span className="d-none d-md-block">{tab.title}</span>
+										</Nav.Link>
+									</Nav.Item>
+								)
+							})}
+						</Nav>
+
+						<Tab.Content className="mt-4 px-2">
+							{(tabContents || []).map((tab, idx) => {
+								return (
+									<Tab.Pane eventKey={tab.title} id={tab.id} key={idx}>
+										<Row>
+											<Col sm="12">{tab.body}</Col>
+										</Row>
+									</Tab.Pane>
+								)
+							})}
+						</Tab.Content>
+					</Tab.Container>
+				</Card.Body>
 			</Card>
 		</div>
 	)

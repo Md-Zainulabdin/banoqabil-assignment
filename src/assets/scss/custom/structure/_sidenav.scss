@@ -22,6 +22,7 @@
     top: 0;
     position: sticky;
     text-align: center;
+    margin-bottom: 25px;
     line-height: $topbar-height;
     padding: 0 calc($leftbar-width-sm * 0.5 - $logo-sm-height * 0.7);
     transition: $transition-base;
@@ -107,7 +108,8 @@ html[data-bs-theme="dark"] {
         color: $menu-item-color;
         transition: $transition-base;
         font-size: $menu-item-font-size;
-        padding: $menu-item-padding-y $menu-item-padding-x;
+        padding: 14px;
+        margin-top: 20px;
         margin: 5px 0;
 
         &:hover,
@@ -236,6 +238,7 @@ html[data-bs-theme="dark"] {
             color: #{$gray-700};
             display: block;
             position: relative;
+            margin-bottom: 25px;
             transition: $transition-base;
             font-size: calc($menu-item-font-size * 0.95);
             padding: calc($menu-item-padding-y * 0.6) calc($menu-item-padding-x * 1.5);
