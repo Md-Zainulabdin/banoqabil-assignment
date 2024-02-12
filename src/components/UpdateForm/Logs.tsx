@@ -1,7 +1,7 @@
 import { useAuthContext } from '@/common'
 import { useGetAgentByIdQuery } from '@/redux/api/AgentsApi'
 import { Card, Col, Row } from 'react-bootstrap'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Column } from 'react-table'
 import { Table } from '..'
 
@@ -12,11 +12,6 @@ interface LogsData {
 	description: string
 }
 
-interface Date {
-	date: string
-	month: string
-	year: string
-}
 
 const columns: ReadonlyArray<Column> = [
 	{

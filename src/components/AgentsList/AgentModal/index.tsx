@@ -1,7 +1,7 @@
 import { useAuthContext } from '@/common'
 import { useGetAgentByIdQuery } from '@/redux/api/AgentsApi'
 import { useState } from 'react'
-import { Button, Col, Modal, Row } from 'react-bootstrap'
+import {Col, Modal, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 interface AgentModalProps {
@@ -11,7 +11,7 @@ interface AgentModalProps {
 }
 
 const AgentModal = ({ show, onHide, agent_id }: AgentModalProps) => {
-	const [fullscreen, setFullscreen] = useState<undefined | string>(undefined)
+	const [fullscreen] = useState<undefined | string>(undefined)
 	const { user } = useAuthContext()
 
 	const { data, isLoading, isSuccess } = useGetAgentByIdQuery({

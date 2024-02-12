@@ -16,25 +16,6 @@ import { fetchEnglishTest } from '@/redux/features/englishTestSlice'
 import { fetchUniversity } from '@/redux/features/universtieSlice'
 import { fetchProgramTypes } from '@/redux/features/programType'
 
-const instructions = [
-	{
-		id: 1,
-		label: "As a counselor you can fill out applicant's base detail",
-	},
-	{
-		id: 2,
-		label:
-			'Allocate the application to your desk in case you wish to work further on this application.',
-	},
-	{
-		id: 3,
-		label: 'Shift desk once you wish to move application.',
-	},
-	{
-		id: 4,
-		label: 'Upload documents or skip the step.',
-	},
-]
 
 const ApplicationForm = () => {
 	const dispatch: AppDispatch = useDispatch()

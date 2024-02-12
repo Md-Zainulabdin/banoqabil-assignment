@@ -12,7 +12,7 @@ function UpdateForm() {
 	const { user } = useAuthContext()
 	const { id } = useParams()
 
-	const { data, isLoading, isError } = useGetAgentByIdQuery({
+	const { data, isLoading } = useGetAgentByIdQuery({
 		userId: id,
 		token: user.token,
 	})
@@ -20,6 +20,7 @@ function UpdateForm() {
 	const [selectedEducationCountry, setSelectedEducationCountry] = useState('')
 	const [selectedProvince, setSelectedProvince] = useState('')
 	const [selectedUniversity, setSelectedUniversity] = useState('')
+	console.log(selectedUniversity)
 
 	const country = useSelector((state: RootState) => state.country)
 	const province = useSelector((state: RootState) => state.province)
@@ -115,7 +116,7 @@ function UpdateForm() {
 			{({ handleSubmit, handleChange, values, touched, errors }) => (
 				<Form noValidate onSubmit={handleSubmit}>
 					<Row className="mb-2">
-						<h4 className='text-primary'>Personal Details</h4>
+						<h4 className="text-primary">Personal Details</h4>
 					</Row>
 
 					<hr />
@@ -132,9 +133,11 @@ function UpdateForm() {
 								isInvalid={!!errors.firstname}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.firstname && errors.firstname}
-							</Form.Control.Feedback>
+							{touched.firstname && typeof errors.firstname === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.firstname}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -148,9 +151,11 @@ function UpdateForm() {
 								isInvalid={!!errors.lastname}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.lastname}
-							</Form.Control.Feedback>
+							{touched.lastname && typeof errors.lastname === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.lastname}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -166,9 +171,11 @@ function UpdateForm() {
 								<option value="Other">Other</option>
 							</Form.Select>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.gender}
-							</Form.Control.Feedback>
+							{touched.gender && typeof errors.gender === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.gender}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 					</Row>
 
@@ -184,9 +191,11 @@ function UpdateForm() {
 								isInvalid={!!errors.email}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.email}
-							</Form.Control.Feedback>
+							{touched.email && typeof errors.email === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.email}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -200,9 +209,11 @@ function UpdateForm() {
 								isInvalid={!!errors.phoneNo}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.phoneNo}
-							</Form.Control.Feedback>
+							{touched.phoneNo && typeof errors.phoneNo === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.phoneNo}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -225,9 +236,12 @@ function UpdateForm() {
 									))}
 							</Form.Select>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.nationality}
-							</Form.Control.Feedback>
+							{touched.nationality &&
+								typeof errors.nationality === 'string' && (
+									<Form.Control.Feedback type="invalid">
+										{errors.nationality}
+									</Form.Control.Feedback>
+								)}
 						</Form.Group>
 					</Row>
 
@@ -243,9 +257,12 @@ function UpdateForm() {
 								isInvalid={!!errors.dateOfBirth}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.dateOfBirth}
-							</Form.Control.Feedback>
+							{touched.dateOfBirth &&
+								typeof errors.dateOfBirth === 'string' && (
+									<Form.Control.Feedback type="invalid">
+										{errors.dateOfBirth}
+									</Form.Control.Feedback>
+								)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -259,9 +276,11 @@ function UpdateForm() {
 								isInvalid={!!errors.address}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.address}
-							</Form.Control.Feedback>
+							{touched.address && typeof errors.address === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.address}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -275,9 +294,11 @@ function UpdateForm() {
 								isInvalid={!!errors.postalCode}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.postalCode}
-							</Form.Control.Feedback>
+							{touched.postalCode && typeof errors.postalCode === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.postalCode}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 					</Row>
 
@@ -309,9 +330,11 @@ function UpdateForm() {
 									))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.country}
-							</Form.Control.Feedback>
+							{touched.country && typeof errors.country === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.country}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 						<Form.Group
 							className="w-100"
@@ -342,9 +365,11 @@ function UpdateForm() {
 										))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.province}
-							</Form.Control.Feedback>
+							{touched.province && typeof errors.province === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.province}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 						<Form.Group
 							className="w-100"
@@ -382,9 +407,11 @@ function UpdateForm() {
 										))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.city}
-							</Form.Control.Feedback>
+							{touched.city && typeof errors.city === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.city}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 					</Row>
 
@@ -417,9 +444,11 @@ function UpdateForm() {
 										))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.region}
-							</Form.Control.Feedback>
+							{touched.region && typeof errors.region === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.region}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -432,10 +461,11 @@ function UpdateForm() {
 								onChange={handleChange}
 								isInvalid={!!errors.nic}
 							/>
-
-							<Form.Control.Feedback type="invalid">
-								{errors.nic}
-							</Form.Control.Feedback>
+							{touched.nic && typeof errors.nic === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.nic}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -449,14 +479,16 @@ function UpdateForm() {
 								isInvalid={!!errors.passport}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.passport}
-							</Form.Control.Feedback>
+							{touched.passport && typeof errors.passport === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.passport}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 					</Row>
 
 					<Row className="mb-1 mt-2">
-						<h4 className='text-primary'>Academic Details</h4>
+						<h4 className="text-primary">Academic Details</h4>
 					</Row>
 
 					<hr />
@@ -489,9 +521,12 @@ function UpdateForm() {
 									))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.lastEducationCountry}
-							</Form.Control.Feedback>
+							{touched.lastEducationCountry &&
+								typeof errors.lastEducationCountry === 'string' && (
+									<Form.Control.Feedback type="invalid">
+										{errors.lastEducationCountry}
+									</Form.Control.Feedback>
+								)}
 						</Form.Group>
 
 						<Form.Group
@@ -520,9 +555,12 @@ function UpdateForm() {
 									))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.lastQualification}
-							</Form.Control.Feedback>
+							{touched.lastQualification &&
+								typeof errors.lastQualification === 'string' && (
+									<Form.Control.Feedback type="invalid">
+										{errors.lastQualification}
+									</Form.Control.Feedback>
+								)}
 						</Form.Group>
 
 						<Form.Group
@@ -551,9 +589,12 @@ function UpdateForm() {
 										))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.lastQualification}
-							</Form.Control.Feedback>
+							{touched.lastInstitution &&
+								typeof errors.lastInstitution === 'string' && (
+									<Form.Control.Feedback type="invalid">
+										{errors.lastInstitution}
+									</Form.Control.Feedback>
+								)}
 						</Form.Group>
 					</Row>
 
@@ -569,9 +610,11 @@ function UpdateForm() {
 								isInvalid={!!errors.cgpa}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.cgpa}
-							</Form.Control.Feedback>
+							{touched.cgpa && typeof errors.cgpa === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.cgpa}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 
 						<Form.Group
@@ -600,9 +643,12 @@ function UpdateForm() {
 									))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.englishTest}
-							</Form.Control.Feedback>
+							{touched.englishTest &&
+								typeof errors.englishTest === 'string' && (
+									<Form.Control.Feedback type="invalid">
+										{errors.englishTest}
+									</Form.Control.Feedback>
+								)}
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="validationFormik03">
@@ -616,14 +662,16 @@ function UpdateForm() {
 								isInvalid={!!errors.score}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.score}
-							</Form.Control.Feedback>
+							{touched.score && typeof errors.score === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.score}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 					</Row>
 
 					<Row className="mb-1 mt-2">
-						<h4 className='text-primary'>Suggested University</h4>
+						<h4 className="text-primary">Suggested University</h4>
 					</Row>
 
 					<hr />
@@ -656,9 +704,11 @@ function UpdateForm() {
 									))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.university}
-							</Form.Control.Feedback>
+							{touched.university && typeof errors.university === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.university}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 						<Form.Group
 							className="w-100"
@@ -684,9 +734,11 @@ function UpdateForm() {
 									))}
 								{/* Add more countries as needed */}
 							</Form.Select>
-							<Form.Control.Feedback type="invalid">
-								{errors.degreeType}
-							</Form.Control.Feedback>
+							{touched.degreeType && typeof errors.degreeType === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.degreeType}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 					</Row>
 
@@ -702,9 +754,11 @@ function UpdateForm() {
 								isInvalid={!!errors.program}
 							/>
 
-							<Form.Control.Feedback type="invalid">
-								{errors.program}
-							</Form.Control.Feedback>
+							{touched.program && typeof errors.program === 'string' && (
+								<Form.Control.Feedback type="invalid">
+									{errors.program}
+								</Form.Control.Feedback>
+							)}
 						</Form.Group>
 					</Row>
 
