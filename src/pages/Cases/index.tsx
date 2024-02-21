@@ -1,4 +1,5 @@
-import AgentsList from '@/components/AgentsList'
+// import AgentsList from '@/components/AgentsList'
+import CustomList from '@/components/CustomList'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -13,7 +14,8 @@ const MyCases = () => {
 					</Link>
 				</div>
 			</div>
-			<AgentsList />
+			{/* <AgentsList /> */}
+			<CustomList />
 		</div>
 	)
 }

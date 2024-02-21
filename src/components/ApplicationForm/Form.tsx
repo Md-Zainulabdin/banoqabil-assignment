@@ -11,7 +11,6 @@ function FormExample() {
 	const [selectedProvince, setSelectedProvince] = useState('')
 	const [selectedUniversity, setSelectedUniversity] = useState('')
 
-	console.log(selectedUniversity)
 
 	const country = useSelector((state: RootState) => state.country)
 	const province = useSelector((state: RootState) => state.province)
